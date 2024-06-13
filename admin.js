@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         try {
             const response = await fetch('https://fakeapi.platzi.com/en/rest/products');
             if (!response.ok) {
-                throw new Error('Failed to fetch products');
+                throw new Error('Xatolik');
             }
             const products = await response.json();
             return products;
@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const li = document.createElement('li');
         li.textContent = `Title: ${product.title}, Price: $${product.price}, Description: ${product.description}`;
         newProductList.appendChild(li);
+        li.classList.add('list');
     }
 
     const products = await fetchProducts();
