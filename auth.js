@@ -10,7 +10,7 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
     };
 
     try {
-        console.log('Attempting to log in with credentials:', loginData);
+        console.log('Loading...:', loginData);
 
         const response = await fetch('https://api.escuelajs.co/api/v1/auth/login', {
             method: 'POST',
@@ -20,7 +20,7 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
             body: JSON.stringify(loginData)
         });
 
-        console.log('Response status:', response.status);
+        console.log("Status:", response.status);
 
         if (!response.ok) {
             const errorMessage = await response.json();
@@ -30,18 +30,18 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
         }
 
         const data = await response.json();
-        console.log('Response data:', data);
+        console.log("Ma'lumotlar javobi:", data);
 
         if (data && data.access_token) {
             localStorage.setItem('access_token', data.access_token);
-            console.log('Login successful, redirecting to admin page.');
+            console.log('Login qilindi.');
             window.location.href = 'admin.html';
         } else {
-            console.error('Invalid response format:', data);
-            document.getElementById('error-message').textContent = 'Invalid login response.';
+            console.error('Error:', data);
+            document.getElementById('error-message').textContent = 'Error';
         }
     } catch (error) {
         console.error('Error:', error);
-        document.getElementById('error-message').textContent = 'An error occurred. Please try again later.';
+        document.getElementById('error-message').textContent = 'Error';
     }
 });

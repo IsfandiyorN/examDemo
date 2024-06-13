@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', async () => {
     const token = localStorage.getItem('access_token');
     if (!token) {
-        alert('You are not authorized to view this page. Please log in.');
+        alert("Siz oldin ro'yhatdan o'tmagansiz , Iltimos Ro'yhatdan o'ting");
         window.location.href = 'auth.html';
         return;
     }
